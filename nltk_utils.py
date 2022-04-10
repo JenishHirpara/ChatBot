@@ -38,7 +38,7 @@ def bag_of_words(tokenized_sentence, all_words):
 # stemmed_words = [stem(w) for w in words]
 # print(stemmed_words)
 
-sentence = ['hello', 'how', 'are', 'you']
-words = ["hi", "hello", "I", "you", "bye", "thank", "cool"]
-bog = bag_of_words(sentence, words)
-print(bog)
+# sentence = ['hello', 'how', 'are', 'you']
+# words = ["hi", "hello", "I", "you", "bye", "thank", "cool"]
+# bog = bag_of_words(sentence, words)
+# print(bog)
