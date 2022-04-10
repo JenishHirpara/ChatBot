@@ -61,6 +61,7 @@ hidden_size = 8
 output_size = len(tags)
 input_size = len(X_train[0])
 learning_rate = 0.001
+num_epochs = 1000
 # print(input_size, len(all_words))
 # print(output_size, tags)
 
@@ -74,3 +75,23 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 # loss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+for epoch in range(num_epochs):
+    for words, labels in train_loader:
+        words = words.to(device)
+        labels = labels.to(device)
+
+        # forward
+        outputs = model(words)
+        loss = criterion(outputs, labels)
+
+        # backward and optimizer step
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+    if (epoch + 1) % 100 == 0:
+        print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch +
+              1, num_epochs, loss.item()))
+
+print('Final loss: {:.4f}'.format(loss.item()))
